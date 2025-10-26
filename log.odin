@@ -22,7 +22,7 @@ vulkan_debug_callback: vk.ProcDebugUtilsMessengerCallbackEXT : proc "system" (
 
 	// TODO: use core:terminal/ansi
 	red_ansi := "\033[31m"
-	gray_ansi := "\033[2m"
+	// gray_ansi := "\033[2m"
 	bold_ansi := "\033[1m"
 	clear_ansi := "\033[0m"
 

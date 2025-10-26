@@ -1,6 +1,5 @@
 package svk
 
-import "core:bytes"
 import "core:log"
 import "core:strings"
 

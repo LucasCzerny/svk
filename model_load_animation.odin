@@ -79,7 +79,7 @@ load_skin :: proc(
 
 @(private = "file")
 load_inverse_bind_matrices :: proc(accessor: ^cgltf.accessor) -> []matrix[4, 4]f32 {
-	data_ptr, component_size, component_count := read_accessor(accessor)
+	data_ptr, _, _ := read_accessor(accessor)
 	stride := get_accessor_stride(accessor)
 
 	matrices := make([]matrix[4, 4]f32, accessor.count)
@@ -187,7 +187,7 @@ load_channel :: proc(
 
 @(private = "file")
 load_keyframes_from_accessor :: proc(accessor: ^cgltf.accessor) -> []f32 {
-	data_ptr, component_size, component_count := read_accessor(accessor)
+	data_ptr, _, _ := read_accessor(accessor)
 	stride := get_accessor_stride(accessor)
 
 	log.ensure(accessor.component_type == .r_32f, "Only f32 keyframes are allowed (for now?)")
@@ -208,7 +208,7 @@ load_values_float_array :: proc(
 	component_size: uint,
 	component_count: uint,
 ) -> [][]f32 {
-	stride := get_accessor_stride(accessor) / component_size
+	// stride := get_accessor_stride(accessor) / component_size
 	count := accessor.count / component_count
 
 	values := make([][]f32, count)

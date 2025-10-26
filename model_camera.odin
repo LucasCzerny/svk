@@ -1,9 +1,6 @@
 package svk
 
-import "core:log"
-import "core:math/linalg"
 import "core:strings"
-
 import "vendor:cgltf"
 
 Camera :: struct {

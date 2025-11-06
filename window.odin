@@ -24,6 +24,11 @@ Window :: struct {
 
 create_window :: proc(window: ^Window, config: Window_Config, instance: vk.Instance) {
 	window_flags: sdl.WindowFlags = {.VULKAN} + config.sdl_window_flags
+
+	if config.resizable {
+		window_flags += {.RESIZABLE}
+	}
+
 	if config.fullscreen {
 		window_flags += {.FULLSCREEN}
 	}
@@ -49,3 +54,4 @@ destroy_window :: proc(ctx: Context, window: Window) {
 	sdl.DestroyWindow(window.handle)
 	vk.DestroySurfaceKHR(ctx.instance, window.surface, nil)
 }
+

@@ -193,6 +193,7 @@ draw :: proc(
 
 	resize_required = result == .ERROR_OUT_OF_DATE_KHR || result == .SUBOPTIMAL_KHR
 	if resize_required {
+		log.debugf("Resizing the swapchain after queue present (result: %v)", result)
 		update_swapchain_capabilities(ctx)
 		recreate_swapchain(ctx^, &ctx.swapchain)
 	} else {
